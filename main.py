@@ -1,9 +1,9 @@
 import telebot, requests, datetime, json
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 
-TOKEN = '6306129164:AAGPj87F97MXTK0MpNHubPch4B4Gw34hF3g'
+TOKEN = ''
 url = "https://json.freeastrologyapi.com/match-making/ashtakoot-score"
-API_KEY = '6e7d14ad5ac3589ad23b040b6e8cf93d'
+API_KEY = ''
 GEOCODER_URL = 'http://api.openweathermap.org/geo/1.0/direct'
 GEOCODER_PARAMS = {
     'appid': API_KEY
@@ -20,11 +20,11 @@ def get_city_coords(city):
 def compatibility():
     try:
         fdfem = requests.get(
-            f'http://api.timezonedb.com/v2.1/get-time-zone?key=VBLPM9XSTAJ4&format=json&by=position&lat={latfem}&lng={lonfem}').json()
+            f'http://api.timezonedb.com/v2.1/get-time-zone?key=&format=json&by=position&lat={latfem}&lng={lonfem}').json()
         zonefem = fdfem['gmtOffset'] / 3600
 
         fdmal = requests.get(
-            f'http://api.timezonedb.com/v2.1/get-time-zone?key=VBLPM9XSTAJ4&format=json&by=position&lat={latmal}&lng={lonmal}').json()
+            f'http://api.timezonedb.com/v2.1/get-time-zone?key=&format=json&by=position&lat={latmal}&lng={lonmal}').json()
         zonemal = fdmal['gmtOffset'] / 3600
 
         payload = json.dumps({
@@ -57,7 +57,7 @@ def compatibility():
         })
         headers = {
             'Content-Type': 'application/json',
-            'x-api-key': 'VVIwNZWCIU66I8LBWEEDD54Wq8gBFwXg81qkuSu9'
+            'x-api-key': ''
         }
         response = requests.request("POST", url, headers=headers, data=payload).json()
         return response['output']['total_score']
